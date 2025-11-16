@@ -7,12 +7,14 @@ class Solution:
             return []
         
         #count zeroes
-        ind_zeroes = []
+        cnt_zeroes = 0
+        ind_zero = -1
         for i in range(len(nums)):
             if nums[i] == 0:
-                ind_zeroes.append(i)
+                cnt_zeroes += 1
+                ind_zero = i
         
-        if len(ind_zeroes) > 1:
+        if cnt_zeroes > 1:
             return [0] * len(nums)
                 
         prd = 1
@@ -24,9 +26,9 @@ class Solution:
         
         
         op = [-1] * len(nums)
-        if len(ind_zeroes) == 1:
+        if  cnt_zeroes == 1:
             op = [0] * len(nums)
-            op[ind_zeroes[0]] = prd
+            op[ind_zero] = prd
             return op
             
         
