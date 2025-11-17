@@ -1,3 +1,21 @@
+"""
+Given an integer array nums and an integer k, return the k most frequent elements within the array.
+
+The test cases are generated such that the answer is always unique.
+
+You may return the output in any order.
+
+Input: nums = [1,2,2,3,3,3], k = 2
+
+Output: [2,3]
+
+
+Input: nums = [7,7], k = 1
+
+Output: [7]
+"""
+
+
 from typing import List
 import heapq
 
@@ -45,6 +63,11 @@ import heapq
 
 #APPROACH 3: Bucket Sort(Time Complexity: O(n)) (MOST OPTIMAL)
 class Solution:
+    """
+    here we are using the bucket sort to create aa frequency list where index represents frequency 
+    and each index contains a list of numbers with that frequency then we iterate from the back of 
+    the frequency list to get the k most frequent elements.
+    """
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         if len(nums) == 0 or k == 0:
             return []
@@ -53,11 +76,12 @@ class Solution:
         for i in nums:
             fmap[i] = 1 + fmap.get(i, 0)
             
-        flist = [[] for i in range(len(nums) + 1) ]
+        flist = [[] for _ in range(len(nums) + 1) ]
         for num, freq in fmap.items():
             flist[freq].append(num)
         
         op: List[int] = []
+        #run the array in reverse starting from end and go back
         for i in range(len(flist)-1, 0,-1):
             for num in flist[i]:
                 op.append(num)
