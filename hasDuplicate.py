@@ -1,18 +1,13 @@
 from typing import List
+import collections
 
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
-        fmap = {}
-        count = 1
-        for i in nums:
-            if(i in fmap):
-                return True
-            
-            else:
-                fmap[i] = 1
-            
-        return False
+          count = collections.Counter(nums)
+          
+          for k,v in count.items():
+              if v > 1:
+                  return k
     
-nums = [1,2,3,3]
 sol = Solution()
-print(sol.hasDuplicate(nums))
+print(sol.hasDuplicate(nums = [1,2,3,3]))

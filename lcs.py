@@ -18,8 +18,6 @@ class Solution:
         return longest
             
         
-    
-
 sol = Solution()
 print(sol.longestConsecutive(nums=[2,20,4,10,3,4,5]))
 print(sol.longestConsecutive(nums=[0,3,2,5,4,6,1,1]))
